@@ -18,6 +18,7 @@
 		F50A48EE183AF8A200FDD7AC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F50A48CD183AF8A200FDD7AC /* Cocoa.framework */; };
 		F50A48F6183AF8A200FDD7AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F50A48F4183AF8A200FDD7AC /* InfoPlist.strings */; };
 		F50A48F8183AF8A200FDD7AC /* TestGetClassInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F50A48F7183AF8A200FDD7AC /* TestGetClassInfoTests.m */; };
+		F50A4903183B02E400FDD7AC /* JFTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F50A4902183B02E400FDD7AC /* JFTestObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		F50A48F3183AF8A200FDD7AC /* TestGetClassInfoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestGetClassInfoTests-Info.plist"; sourceTree = "<group>"; };
 		F50A48F5183AF8A200FDD7AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F50A48F7183AF8A200FDD7AC /* TestGetClassInfoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGetClassInfoTests.m; sourceTree = "<group>"; };
+		F50A4901183B02E400FDD7AC /* JFTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFTestObject.h; sourceTree = "<group>"; };
+		F50A4902183B02E400FDD7AC /* JFTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFTestObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 			children = (
 				F50A48DF183AF8A200FDD7AC /* JFAppDelegate.h */,
 				F50A48E0183AF8A200FDD7AC /* JFAppDelegate.m */,
+				F50A4901183B02E400FDD7AC /* JFTestObject.h */,
+				F50A4902183B02E400FDD7AC /* JFTestObject.m */,
 				F50A48E2183AF8A200FDD7AC /* MainMenu.xib */,
 				F50A48E5183AF8A200FDD7AC /* Images.xcassets */,
 				F50A48D4183AF8A200FDD7AC /* Supporting Files */,
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50A48E1183AF8A200FDD7AC /* JFAppDelegate.m in Sources */,
+				F50A4903183B02E400FDD7AC /* JFTestObject.m in Sources */,
 				F50A48DA183AF8A200FDD7AC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +324,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -355,7 +361,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -384,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestGetClassInfo/TestGetClassInfo-Prefix.pch";
@@ -397,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestGetClassInfo/TestGetClassInfo-Prefix.pch";
