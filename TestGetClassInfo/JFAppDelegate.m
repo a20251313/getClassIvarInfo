@@ -25,7 +25,7 @@
 
 
 #if __has_feature(objc_arc)
-#error This file must be compiled with Non_ARC.
+#error This file must be compiled with Non_ARC. or will cased crash
 #endif
 
 
@@ -42,16 +42,16 @@
 
 
 
-- (void)myMethod
+-(NSString *)description
 {
-  //  unsigned int outCount = 0, i = 0;
-   // objc_property_t *properties = class_copyPropertyList([self class], &outCount);
+    NSString  *strInfo = nil;
     const char *className = class_getName([self class]);
     NSString  *strClassName = [NSString stringWithCString:className encoding:[NSString defaultCStringEncoding]];
-    NSLog(@"strClassName:%@",strClassName);
-    m_strInfo = @"12345";
-    self.ivar1 = 12;
-    unsigned int   count = 0;
+    
+    strInfo = [NSString stringWithFormat:@"baseclass:%@ <<%p>> ",strClassName,self];
+    
+    
+    unsigned int  count = 0;
     Ivar *list  =   class_copyIvarList([self class], &count);
     for (int i = 0; i < count; i++)
     {
@@ -67,7 +67,8 @@
         if ([ivarTye rangeOfString:@"@"].location != NSNotFound)
         {
             id value = object_getIvar(self, ivar);
-            NSLog(@"%@: %@",ivarName,value);
+            strInfo = [strInfo stringByAppendingFormat:@" %@: %@",ivarName,value];
+          //  NSLog();
         }else
         {
             if ([ivarTye length] == 1)
@@ -77,36 +78,41 @@
                     case 'c':
                     {
                         char c = (char)object_getIvar(self, ivar);
-                        NSLog(@"%@: %c",ivarName,c);
+                      //  NSLog(@"%@: %c",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %c",ivarName,c];
                         
                     }
-                       
+                        
                         break;
                     case 'i':
                     {
                         int c = (int)object_getIvar(self, ivar);
-                        NSLog(@"%@: %i",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %i",ivarName,c];
+                       // NSLog(@"%@: %i",ivarName,c);
                         
                     }
                         break;
                     case 's':
                     {
                         short c = (short)object_getIvar(self, ivar);
-                        NSLog(@"%@: %i",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %i",ivarName,c];
+                       // NSLog(@"%@: %i",ivarName,c);
                         
                     }
                         break;
                     case 'l':
                     {
                         long c = (long)object_getIvar(self, ivar);
-                        NSLog(@"%@: %ld",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %ld",ivarName,c];
+                       // NSLog(@"%@: %ld",ivarName,c);
                         
                     }
                         break;
                     case 'q':
                     {
                         long long c = (long long)object_getIvar(self, ivar);
-                        NSLog(@"%@: %lld",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %lld",ivarName,c];
+                     //   NSLog(@"%@: %lld",ivarName,c);
                         
                     }
                         
@@ -114,42 +120,47 @@
                     case 'C':
                     {
                         unsigned char c = (unsigned char)object_getIvar(self, ivar);
-                        NSLog(@"%@: %c",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %c",ivarName,c];
+                      //  NSLog(@"%@: %c",ivarName,c);
                         
                     }
                         break;
                     case 'I':
                     {
                         unsigned int c = (unsigned int)object_getIvar(self, ivar);
-                        NSLog(@"%@: %d",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %d",ivarName,c];
+                      //  NSLog(@"%@: %d",ivarName,c);
                         
                     }
                         break;
                     case 'S':
                     {
                         unsigned short c = (unsigned short)object_getIvar(self, ivar);
-                        NSLog(@"%@: %d",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %d",ivarName,c];
+                      //  NSLog(@"%@: %d",ivarName,c);
                         
                     }
                         break;
                     case 'L':
                     {
                         unsigned long c = (unsigned long)object_getIvar(self, ivar);
-                        NSLog(@"%@: %ld",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %ld",ivarName,c];
+                       // NSLog(@"%@: %ld",ivarName,c);
                         
                     }
                         break;
                     case 'Q':
                     {
                         unsigned long long c = (unsigned long long)object_getIvar(self, ivar);
-                        NSLog(@"%@: %lld",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %lld",ivarName,c];
+                       // NSLog(@"%@: %lld",ivarName,c);
                         
                     }
                         break;
                     case 'f':
                     {
-                      //  float c = (float)object_getIvar(self, ivar);
-                      //  NSLog(@"%@: %f",ivarName,c);
+                        //  float c = (float)object_getIvar(self, ivar);
+                        //  NSLog(@"%@: %f",ivarName,c);
                         
                     }
                         break;
@@ -158,9 +169,10 @@
                     case 'B':
                     {
                         int c = (int)object_getIvar(self, ivar);
-                        NSLog(@"%@: %d",ivarName,c);
+                        strInfo = [strInfo stringByAppendingFormat:@" %@: %d",ivarName,c];
+                        //NSLog(@"%@: %d",ivarName,c);
                         
-                    } 
+                    }
                         break;
                     default:
                         break;
@@ -168,31 +180,20 @@
             }
         }
         
-       // NSLog(@"name:%@ type:%@",ivarName,ivarTye);
+        // NSLog(@"name:%@ type:%@",ivarName,ivarTye);
     }
     
     
     
     free(list);
+
     
-    /*
-    
-    for(i = 0; i < outCount; i++)
-    {
-        objc_property_t property = properties[i];
-        const char *propName = property_getName(property);
-        if(propName)
-        {
-            const char *propType = property_getAttributes(property);
-            NSString *propertyName = [NSString stringWithCString:propName
-                                                        encoding:[NSString defaultCStringEncoding]];
-            NSString *propertyType = [NSString stringWithCString:propType
-                                                        encoding:[NSString defaultCStringEncoding]];
-            NSLog(@"propertyName:%@ propertyType:%@",propertyName,propertyType);
-            
-        }
-    }
-    free(properties);*/
+    return strInfo;
+}
+
+- (void)myMethod
+{
+    NSLog(@"self desprition:%@",self);
 }
 
 @end
