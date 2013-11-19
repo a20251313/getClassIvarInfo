@@ -159,6 +159,10 @@
                         break;
                     case 'f':
                     {
+                        float  value = 0;
+                        self.ivar2 = 10;
+                        object_getInstanceVariable(self,name,(void*)&value);
+                        NSLog(@"value:%f",value);
                         //  float c = (float)object_getIvar(self, ivar);
                         //  NSLog(@"%@: %f",ivarName,c);
                         
